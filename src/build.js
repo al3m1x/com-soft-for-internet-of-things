@@ -51,7 +51,7 @@ s1.addImage({
   altText: "Diagram systemu Paczkomat: procesy Kurier, Paczkomat, Odbiorca i listy sygnałów między nimi",
 });
 s1.addText(
-  "sk – numer skrytki · kk – kod kuriera · kod – kod odbioru · rozm – rozmiar paczki",
+  "nr – numer paczki · sk – numer skrytki · kod – kod odbioru · rozm – rozmiar paczki",
   { x: 0.5, y: 6.3, w: 7.9, h: 0.35, fontSize: 12, color: C.accent3, margin: 0, isTextBox: true,
     objectName: "Legenda oznaczeń" }
 );
@@ -63,14 +63,13 @@ s1.addShape(pres.ShapeType.rect, {
 s1.addText(
   [
     { text: "Scenariusz", options: { bold: true, fontSize: 16, breakLine: true, paraSpaceAfter: 4 } },
-    { text: "Kurier nadaje paczkę: podaje rozmiar i kod, wkłada ją do otwartej skrytki. Paczkomat wysyła Odbiorcy SMS z kodem, a Odbiorca odbiera paczkę.",
+    { text: "Kurier skanuje paczkę, skrytka się otwiera, Kurier wkłada paczkę i ją zamyka. Paczkomat wysyła Odbiorcy SMS z kodem, a Odbiorca odbiera paczkę.",
       options: { fontSize: 14, breakLine: true, paraSpaceAfter: 12 } },
     { text: "Ograniczenia", options: { bold: true, fontSize: 16, breakLine: true, paraSpaceAfter: 4 } },
     { text: "Kod odbioru jest jednorazowy i trafia do Odbiorcy w SMS", options: { bullet: true, fontSize: 14, breakLine: true, paraSpaceAfter: 4 } },
     { text: "3 błędne kody Odbiorcy → Blokada", options: { bullet: true, fontSize: 14, breakLine: true, paraSpaceAfter: 4 } },
     { text: "Czas na odbiór T = 48 h, potem skrytka jest zwalniana", options: { bullet: true, fontSize: 14, breakLine: true, paraSpaceAfter: 4 } },
-    { text: "rozm ∈ {S, M, L}; brak skrytki → Brak_miejsca", options: { bullet: true, fontSize: 14, breakLine: true, paraSpaceAfter: 4 } },
-    { text: "Błędny kod kuriera → Odmowa", options: { bullet: true, fontSize: 14 } },
+    { text: "rozm ∈ {S, M, L} wynika z numeru paczki; brak skrytki tego rozmiaru → Brak_miejsca", options: { bullet: true, fontSize: 14 } },
   ],
   { x: 8.95, y: 1.8, w: 3.7, h: 4.15, valign: "top", color: C.text1, margin: 0, isTextBox: true,
     objectName: "Opis i ograniczenia" }
@@ -88,17 +87,17 @@ s2.addText("Definicje procesów", { placeholder: "title" });
 const cards = [
   {
     name: "KURIER", kind: "człowiek",
-    rola: "Nadaje paczkę: podaje rozmiar i swój kod, wkłada paczkę do otwartej skrytki i ją zamyka.",
+    rola: "Skanuje paczkę, wkłada ją do otwartej skrytki i ją zamyka.",
     stany: ["SPOCZYNEK", "CZEKA_NA_PACZKOMAT"],
-    dcl: "rozm, kk, sk",
-    reakcje: ["Podaj_kod → Kod_kuriera(kk) lub Anuluj", "Otwarto(sk) → Zamknięto", "Brak_miejsca, Odmowa → SPOCZYNEK"],
+    dcl: "nr, sk",
+    reakcje: ["Otwarto(sk) → Zamknięto", "Brak_miejsca → SPOCZYNEK"],
     reakcjeLabel: "Reakcje: CZEKA_NA_PACZKOMAT",
   },
   {
     name: "PACZKOMAT", kind: "maszyna",
-    rola: "Weryfikuje kuriera, przydziela skrytkę, generuje kod odbioru i wysyła SMS, pilnuje limitu prób i czasu T.",
-    stany: ["GOTOWOŚĆ", "CZEKA_NA_KOD_KURIERA", "CZEKA_NA_ZAMKNIĘCIE", "CZEKA_NA_KOD_ODBIORCY", "CZEKA_NA_ODEBRANIE", "BLOKADA"],
-    dcl: "rozm, kk, sk, kod, kw, próby, timer T",
+    rola: "Rozpoznaje paczkę, przydziela skrytkę, generuje kod odbioru i wysyła SMS, pilnuje limitu prób i czasu T.",
+    stany: ["GOTOWOŚĆ", "CZEKA_NA_ZAMKNIĘCIE", "CZEKA_NA_KOD_ODBIORCY", "CZEKA_NA_ODEBRANIE", "BLOKADA"],
+    dcl: "nr, rozm, sk, kod, kw, próby, timer T",
     reakcje: [],
   },
   {

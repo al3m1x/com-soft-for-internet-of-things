@@ -9,16 +9,12 @@
   <path d="M40,100 H28 V136 H40 M133,100 H145 V136 H133" fill="none" stroke="#000" stroke-width="1.5"/>
   <text x="44" y="126" font-size="16">Nadanie</text>
   <g stroke="#000" stroke-width="1.5" fill="none"><line x1="262" y1="305" x2="398" y2="305" marker-end="url(#arr)"/><line x1="398" y1="355" x2="262" y2="355" marker-end="url(#arr)"/><line x1="602" y1="305" x2="738" y2="305" marker-end="url(#arr)"/><line x1="738" y1="355" x2="602" y2="355" marker-end="url(#arr)"/></g>
-  <path d="M242,104 H230 V206 H242 M418,104 H430 V206 H418" fill="none" stroke="#000" stroke-width="1.5"/>
-  <text x="246" y="130" font-size="16">Paczka(rozm)</text>
-  <text x="246" y="152" font-size="16">Kod_kuriera(kk)</text>
-  <text x="246" y="174" font-size="16">Zamknięto</text>
-  <text x="246" y="196" font-size="16">Anuluj</text>
-  <path d="M242,458 H230 V560 H242 M418,458 H430 V560 H418" fill="none" stroke="#000" stroke-width="1.5"/>
-  <text x="246" y="484" font-size="16">Podaj_kod</text>
-  <text x="246" y="506" font-size="16">Otwarto(sk)</text>
-  <text x="246" y="528" font-size="16">Brak_miejsca</text>
-  <text x="246" y="550" font-size="16">Odmowa</text>
+  <path d="M242,148 H230 V206 H242 M418,148 H430 V206 H418" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="246" y="174" font-size="16">Paczka(nr)</text>
+  <text x="246" y="196" font-size="16">Zamknięto</text>
+  <path d="M242,458 H230 V516 H242 M418,458 H430 V516 H418" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="246" y="484" font-size="16">Otwarto(sk)</text>
+  <text x="246" y="506" font-size="16">Brak_miejsca</text>
   <path d="M582,104 H570 V206 H582 M758,104 H770 V206 H758" fill="none" stroke="#000" stroke-width="1.5"/>
   <text x="586" y="130" font-size="16">SMS(kod)</text>
   <text x="586" y="152" font-size="16">Otwarto(sk)</text>
@@ -29,10 +25,10 @@
   <text x="586" y="506" font-size="16">Odebrano</text>
   <text x="586" y="528" font-size="16">Anuluj</text>
   <text x="40" y="630" font-size="18" font-weight="bold">Ograniczenia</text>
-  <text x="40" y="660" font-size="16">• Kod odbioru (kod) jest jednorazowy i wysyłany do Odbiorcy w SMS po zamknięciu skrytki przez Kuriera.</text>
-  <text x="40" y="686" font-size="16">• Po 3 błędnych kodach Odbiorcy Paczkomat blokuje odbiór (Blokada) do upływu czasu T.</text>
-  <text x="40" y="712" font-size="16">• Czas na odbiór T = 48 h od wysłania SMS, po upływie skrytka jest zwalniana.</text>
-  <text x="40" y="738" font-size="16">• Rozmiar paczki (rozm) ∈ {S, M, L}; brak wolnej skrytki danego rozmiaru → Brak_miejsca.</text>
-  <text x="40" y="764" font-size="16">• Błędny kod kuriera (kk) → Odmowa.</text>
-  <text x="40" y="790" font-size="16">• sk – numer skrytki, kk – kod kuriera, kod – kod odbioru.</text>
+  <text x="40" y="660" font-size="16">• Kurier skanuje paczkę (Paczka), skrytka się otwiera, Kurier wkłada paczkę i ją zamyka (Zamknięto).</text>
+  <text x="40" y="686" font-size="16">• Kod odbioru (kod) jest jednorazowy i wysyłany do Odbiorcy w SMS po zamknięciu skrytki przez Kuriera.</text>
+  <text x="40" y="712" font-size="16">• Po 3 błędnych kodach Odbiorcy Paczkomat blokuje odbiór (Blokada) do upływu czasu T.</text>
+  <text x="40" y="738" font-size="16">• Czas na odbiór T = 48 h od wysłania SMS, po upływie skrytka jest zwalniana.</text>
+  <text x="40" y="764" font-size="16">• Rozmiar paczki (rozm ∈ {S, M, L}) wynika z jej numeru; brak wolnej skrytki tego rozmiaru → Brak_miejsca.</text>
+  <text x="40" y="790" font-size="16">• nr – numer paczki, sk – numer skrytki, kod – kod odbioru.</text>
   </svg>

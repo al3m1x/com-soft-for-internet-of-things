@@ -16,19 +16,19 @@ PROJECT = ROOT / "project"
 SRC = ROOT / "src"
 
 # signal lists: top = left -> right, bottom = right -> left
-KURIER_P = ["Paczka(rozm)", "Kod_kuriera(kk)", "Zamknięto", "Anuluj"]
-P_KURIER = ["Podaj_kod", "Otwarto(sk)", "Brak_miejsca", "Odmowa"]
+KURIER_P = ["Paczka(nr)", "Zamknięto"]
+P_KURIER = ["Otwarto(sk)", "Brak_miejsca"]
 P_ODBIORCA = ["SMS(kod)", "Otwarto(sk)", "Błędny_kod", "Blokada"]
 ODBIORCA_P = ["Kod(kod)", "Odebrano", "Anuluj"]
 ENV = ["Nadanie"]
 
 OGRANICZENIA = [
+    "Kurier skanuje paczkę (Paczka), skrytka się otwiera, Kurier wkłada paczkę i ją zamyka (Zamknięto).",
     "Kod odbioru (kod) jest jednorazowy i wysyłany do Odbiorcy w SMS po zamknięciu skrytki przez Kuriera.",
     "Po 3 błędnych kodach Odbiorcy Paczkomat blokuje odbiór (Blokada) do upływu czasu T.",
     "Czas na odbiór T = 48 h od wysłania SMS, po upływie skrytka jest zwalniana.",
-    "Rozmiar paczki (rozm) ∈ {S, M, L}; brak wolnej skrytki danego rozmiaru → Brak_miejsca.",
-    "Błędny kod kuriera (kk) → Odmowa.",
-    "sk – numer skrytki, kk – kod kuriera, kod – kod odbioru.",
+    "Rozmiar paczki (rozm ∈ {S, M, L}) wynika z jej numeru; brak wolnej skrytki tego rozmiaru → Brak_miejsca.",
+    "nr – numer paczki, sk – numer skrytki, kod – kod odbioru.",
 ]
 
 

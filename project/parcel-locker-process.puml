@@ -3,72 +3,58 @@ group Proces Paczkomat {
     note
         Zmienne
         ----
-        rozm, kk, sk, kod, kw, próby
+        nr, rozm, sk, kod, kw, próby
         T (timer 48 h)
     end note
     :GOTOWOŚĆ;
-    :Paczka(rozm); <<input>>
-    :Podaj_kod; <<output>>
-    :CZEKA_NA_KOD_KURIERA;
-    split
-        :Kod_kuriera(kk); <<input>>
-        if (Czy kk poprawny?) then (N)
-            :Odmowa; <<output>>
-            :GOTOWOŚĆ;
-            detach
-        else (T)
-            if (Czy jest wolna\nskrytka rozm?) then (N)
-                :Brak_miejsca; <<output>>
+    :Paczka(nr); <<input>>
+    :rozm := rozmiar(nr); <<task>>
+    if (Czy jest wolna\nskrytka rozm?) then (N)
+        :Brak_miejsca; <<output>>
+        :GOTOWOŚĆ;
+        detach
+    else (T)
+        :Otwarto(sk); <<output>>
+        :CZEKA_NA_ZAMKNIĘCIE;
+        :Zamknięto; <<input>>
+        :SMS(kod); <<output>>
+        :set(T, now+48h); <<task>>
+        :próby := 0; <<task>>
+        :CZEKA_NA_KOD_ODBIORCY;
+        split
+            :Kod(kw); <<input>>
+            if (Czy kw = kod?) then (T)
+                :Otwarto(sk); <<output>>
+                :CZEKA_NA_ODEBRANIE;
+                :Odebrano; <<input>>
+                :zwolnij skrytkę; <<task>>
                 :GOTOWOŚĆ;
                 detach
-            else (T)
-                :Otwarto(sk); <<output>>
-                :CZEKA_NA_ZAMKNIĘCIE;
-                :Zamknięto; <<input>>
-                :SMS(kod); <<output>>
-                :set(T, now+48h); <<task>>
-                :próby := 0; <<task>>
-                :CZEKA_NA_KOD_ODBIORCY;
-                split
-                    :Kod(kw); <<input>>
-                    if (Czy kw = kod?) then (T)
-                        :Otwarto(sk); <<output>>
-                        :CZEKA_NA_ODEBRANIE;
-                        :Odebrano; <<input>>
-                        :zwolnij skrytkę; <<task>>
-                        :GOTOWOŚĆ;
-                        detach
-                    else (N)
-                        :próby := próby + 1; <<task>>
-                        if (Czy próby >= 3?) then (T)
-                            :Blokada; <<output>>
-                            :BLOKADA;
-                            :T; <<input>>
-                            :zwolnij skrytkę; <<task>>
-                            :GOTOWOŚĆ;
-                            detach
-                        else (N)
-                            :Błędny_kod; <<output>>
-                            :CZEKA_NA_KOD_ODBIORCY;
-                            detach
-                        endif
-                    endif
-                split again
-                    :Anuluj; <<input>>
-                    :CZEKA_NA_KOD_ODBIORCY;
-                    detach
-                split again
+            else (N)
+                :próby := próby + 1; <<task>>
+                if (Czy próby >= 3?) then (T)
+                    :Blokada; <<output>>
+                    :BLOKADA;
                     :T; <<input>>
                     :zwolnij skrytkę; <<task>>
                     :GOTOWOŚĆ;
                     detach
-                end split
+                else (N)
+                    :Błędny_kod; <<output>>
+                    :CZEKA_NA_KOD_ODBIORCY;
+                    detach
+                endif
             endif
-        endif
-    split again
-        :Anuluj; <<input>>
-        :GOTOWOŚĆ;
-        detach
-    end split
+        split again
+            :Anuluj; <<input>>
+            :CZEKA_NA_KOD_ODBIORCY;
+            detach
+        split again
+            :T; <<input>>
+            :zwolnij skrytkę; <<task>>
+            :GOTOWOŚĆ;
+            detach
+        end split
+    endif
 }
 @enduml

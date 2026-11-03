@@ -21,17 +21,19 @@ individual project.
 The project is an SDL-style specification of a human–machine communication protocol: three
 communicating processes, their signal lists and constraints.
 
-**Scenario.** A **Courier** deposits a parcel in a **Parcel Locker**, which sends the **Recipient** an SMS
-with a one-time pickup code. The Recipient enters the code and collects the parcel.
+**Scenario.** A **Courier** scans a parcel at a **Parcel Locker**, a box opens, and the Courier puts the
+parcel in and closes it. The locker then sends the **Recipient** an SMS with a one-time pickup code, and
+the Recipient enters the code and collects the parcel.
 
 | Process | Type | Role |
 |---|---|---|
-| Courier (`KURIER`) | human | identifies with a courier code, picks a parcel size, closes the locker box |
-| Parcel Locker (`PACZKOMAT`) | machine | verifies the courier, assigns a box, issues the pickup code, enforces limits |
+| Courier (`KURIER`) | human | scans the parcel, puts it in the box that opens, closes the box |
+| Parcel Locker (`PACZKOMAT`) | machine | identifies the parcel, assigns a box, issues the pickup code, enforces limits |
 | Recipient (`ODBIORCA`) | human | receives the SMS code, enters it, collects the parcel |
 
 **Constraints:** the pickup code is single-use; 3 wrong codes block pickup; the parcel must be collected
-within T = 48 h; parcel sizes are S/M/L, and no free box of that size means rejection.
+within T = 48 h; the box size (S/M/L) follows from the scanned parcel, and no free box of that size means
+rejection.
 
 Diagram text, signal names and state names are in Polish, as the course is taught in Polish.
 

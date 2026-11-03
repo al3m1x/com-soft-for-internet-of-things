@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="10 40 960 550" width="960" height="550" font-family="Arial, Helvetica, sans-serif">
+  <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#000"/></marker></defs>
+  <rect x="0" y="0" width="1000" height="1000" fill="#fff"/>
+  <g fill="#fff" stroke="#000" stroke-width="1.5"><polygon points="95,230 225,230 260,265 260,395 225,430 95,430 60,395 60,265"/><polygon points="435,230 565,230 600,265 600,395 565,430 435,430 400,395 400,265"/><polygon points="775,230 905,230 940,265 940,395 905,430 775,430 740,395 740,265"/></g>
+  <g font-size="24" text-anchor="middle"><text x="160" y="338">KURIER</text><text x="500" y="338">PACZKOMAT</text><text x="840" y="338">ODBIORCA</text></g>
+  <line x1="160" y1="70" x2="160" y2="228" stroke="#000" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M40,100 H28 V138 H40 M133,100 H145 V138 H133" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="44" y="128" font-size="18">Nadanie</text>
+  <g stroke="#000" stroke-width="1.5" fill="none"><line x1="262" y1="305" x2="398" y2="305" marker-end="url(#arr)"/><line x1="398" y1="355" x2="262" y2="355" marker-end="url(#arr)"/><line x1="602" y1="305" x2="738" y2="305" marker-end="url(#arr)"/><line x1="738" y1="355" x2="602" y2="355" marker-end="url(#arr)"/></g>
+  <path d="M242,96 H230 V206 H242 M418,96 H430 V206 H418" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="246" y="124" font-size="18">Paczka(rozm)</text>
+  <text x="246" y="148" font-size="18">Kod_kuriera(kk)</text>
+  <text x="246" y="172" font-size="18">Zamknięto</text>
+  <text x="246" y="196" font-size="18">Anuluj</text>
+  <path d="M242,458 H230 V568 H242 M418,458 H430 V568 H418" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="246" y="486" font-size="18">Podaj_kod</text>
+  <text x="246" y="510" font-size="18">Otwarto(sk)</text>
+  <text x="246" y="534" font-size="18">Brak_miejsca</text>
+  <text x="246" y="558" font-size="18">Odmowa</text>
+  <path d="M582,96 H570 V206 H582 M758,96 H770 V206 H758" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="586" y="124" font-size="18">SMS(kod)</text>
+  <text x="586" y="148" font-size="18">Otwarto(sk)</text>
+  <text x="586" y="172" font-size="18">Błędny_kod</text>
+  <text x="586" y="196" font-size="18">Blokada</text>
+  <path d="M582,458 H570 V544 H582 M758,458 H770 V544 H758" fill="none" stroke="#000" stroke-width="1.5"/>
+  <text x="586" y="486" font-size="18">Kod(kod)</text>
+  <text x="586" y="510" font-size="18">Odebrano</text>
+  <text x="586" y="534" font-size="18">Anuluj</text>
+  </svg>

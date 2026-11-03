@@ -1,0 +1,12 @@
+{
+  "name": "parcel-locker-slides",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Builds the Parcel Locker protocol presentation",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}

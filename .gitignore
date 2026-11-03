@@ -1,0 +1,10 @@
+# Local toolchain (portable JRE + plantuml.jar) and dependencies
+tools/
+node_modules/
+
+# Python / OS / editor
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.vscode/

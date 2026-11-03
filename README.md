@@ -89,7 +89,9 @@ New-Item -ItemType Directory -Force tools; Invoke-WebRequest https://github.com/
 **4. Install the JavaScript dependencies**
 
 ```bash
-npm --prefix src install
+cd src
+npm install
+cd ..
 ```
 
 ## Running

@@ -16,7 +16,6 @@ receives. Python's `socket` module wraps the same BSD / WinSock2 calls used in t
 | `tcp_client.py [message] [port]` | sends the message, prints the echo |
 | `udp_server.py [port]` | `127.0.0.1:5001` |
 | `udp_client.py [message] [port]` | sends one datagram, prints the echo or "no reply" |
-| `test_lab1.py` | automated tests (start the servers on ports 50000-50002) |
 
 ## Run
 
@@ -38,12 +37,6 @@ python udp_client.py hello
 ```
 
 Stop a server with Ctrl+C (on Windows, if it does not react while waiting, use Ctrl+Break).
-
-## Test
-
-```bash
-python -m unittest -v
-```
 
 ## Notes
 
